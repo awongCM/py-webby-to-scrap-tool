@@ -1,2 +1,4 @@
 # ignore files/folders
 __pycache__/
+*.csv
+*.html
