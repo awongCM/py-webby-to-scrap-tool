@@ -1,4 +1,5 @@
-# import libraries I need
+# imported libraries 
+
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import webbrowser
@@ -71,9 +72,9 @@ print("==== Title ====")
 print(soup.title.text)
 search_and_output_tag("h1", "H1 Titles", "text")
 search_and_output_tag("h2", "H2 Titles", "text")
-search_and_output_tag("p", "paragraphs content", "text")
-search_and_output_tag("a", "a links", "href")
-search_and_output_tag("img", "images", "image")
+search_and_output_tag("p", "Paragraphs content", "text")
+search_and_output_tag("a", "Hyperlink links", "href")
+search_and_output_tag("img", "Images", "image")
 
 # Writes to CSV report file
 with open('base_url_semantics.csv', 'a') as csv_file:

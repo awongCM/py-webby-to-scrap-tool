@@ -7,9 +7,9 @@ with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='py-webb-to-scrap-tool',
+    name='py-webby-to-scrap-tool',
     version='0.1.0',
-    description='Sample package for Python-Guide.org',
+    description='mini web content scraper tool',
     long_description=readme,
     author='Andy Wong',
     author_email='awong.cm@gmail.com',
