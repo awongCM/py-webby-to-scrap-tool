@@ -1,3 +1,0 @@
-Py Webby Scraper Tool
-========================
-
