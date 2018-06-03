@@ -14,10 +14,8 @@ h1 - heading
 url - url link
 p - paragraph
 img - images
-
 '''
-
-base_url = "https://www.seek.com.au/software-developer-jobs/in-All-Sydney-NSW"
+base_url = "https://www.sbs.com.au/popasia/blog/2017/08/23/youtube-helping-push-k-pop-mainstream"
 
 #query website and return html to the page
 page = urlopen(base_url)
@@ -67,35 +65,18 @@ def determine_type(tag_obj, tag_type):
     output_str = "Image: {0} , Alt: {1}".format(tag_obj.attrs['src'] , tag_obj.get('alt',''))
   return output_str
 
-def fetch_articles():
-  return soup.find_all("article")
-
-def extract_details(a_job_article):
-  # Job title
-  print(a_job_article["aria-label"])
-
-  # Company
-  company = a_job_article.find(attrs={"data-automation":"jobCompany"}) 
-  if company !=  None:
-    print(company.text)
-
-  # Location
-  company = a_job_article.find(attrs={"data-automation":"jobCompany"}) 
-  if company !=  None:
-    print(company.text)
-
-  # Job Type
-  company = a_job_article.find(attrs={"data-automation":"jobCompany"}) 
-  if company !=  None:
-    print(company.text)
-  
-  # Job Description
-  company = a_job_article.find(attrs={"data-automation":"jobCompany"}) 
-  if company !=  None:
-    print(company.text)
+# Prints output to console screen
+print("==== Title ====")
+print(soup.title.text)
+search_and_output_tag("h1", "H1 Titles", "text")
+search_and_output_tag("h2", "H2 Titles", "text")
+search_and_output_tag("p", "Paragraphs content", "text")
+search_and_output_tag("a", "Hyperlink links", "href")
+search_and_output_tag("img", "Images", "image")
 
 # Writes to CSV report file
 with open('base_url_semantics.csv', 'a') as csv_file:
+
   # Empty file contents first
   csv_file.seek(0)
   csv_file.truncate()
@@ -105,8 +86,10 @@ with open('base_url_semantics.csv', 'a') as csv_file:
   csv_writer.writerow(["==== Title ===="])
   csv_writer.writerow([soup.title.text])
   
-  job_articles = fetch_articles()
+  search_and_output_tag("h1", "H1 Titles", "text", writer)
+  search_and_output_tag("h2", "H2 Titles", "text", writer)
+  search_and_output_tag("p", "paragraphs content", "text", writer)
+  search_and_output_tag("a", "a links", "href", writer)
+  search_and_output_tag("img", "images", "image", writer)
 
-  for a_job_article in job_articles:
-    extract_details(a_job_article)
   
