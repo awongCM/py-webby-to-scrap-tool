@@ -7,16 +7,6 @@ import webbrowser
 from datetime import datetime
 import csv
 
-'''
-TODOS
-A tool to takes a url content and scrap 3 data infomration on the page.
-h1 - heading
-url - url link
-p - paragraph
-img - images
-
-'''
-
 base_url = "https://www.seek.com.au/software-developer-jobs/in-All-Sydney-NSW"
 
 #query website and return html to the page
