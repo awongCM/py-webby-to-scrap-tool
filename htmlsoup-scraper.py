@@ -1,4 +1,4 @@
-# TODO - class to implement
+# TODO - OOD class to implement for BeautifulSoup
 
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
