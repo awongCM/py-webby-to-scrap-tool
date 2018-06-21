@@ -24,6 +24,8 @@ class JobSearchSpider(scrapy.Spider):
             item['salary_range'] = job.css('span[data-automation="jobSalary"] span::text').extract_first()
             item['role_specification'] = ';'.join(list_of_dutiestasks)
             item['job_description'] = job.css('span[data-automation="jobShortDescription"] span[data-automation="false"]::text').extract_first()
+            # Grab the actual job post link 
+            item['job_link'] = response.urljoin(job.css('a[data-automation="jobTitle"]::attr(href)').extract_first())
 
             yield item
 
