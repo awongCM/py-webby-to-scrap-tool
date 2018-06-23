@@ -84,6 +84,13 @@ def extract_details(a_job_article, csv_writer=None):
     print(job_description.text)
     job_article_dict["job_description"] = job_description.text
 
+  # Grab the actual job post link 
+  job_link = a_job_article.find(attrs={"data-automation":"jobTitle"})
+  if job_link != None:
+    print(job_link)
+    # only gives you the relative link url.
+    job_article_dict["job_link"] = job_link['href']
+
   csv_writer.writerow(job_article_dict)
 
 # Writes to CSV report file
@@ -92,7 +99,7 @@ with open('base_url_semantics.csv', 'a') as csv_file:
   csv_file.seek(0)
   csv_file.truncate()
 
-  fieldnames = ['job_title', 'company', 'location', 'area', 'salary_range', 'role_specification', 'job_description']
+  fieldnames = ['job_title', 'company', 'location', 'area', 'salary_range', 'role_specification', 'job_description', 'job_link']
   csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
   csv_writer.writeheader()
   
