@@ -7,7 +7,7 @@ class JobSearchSpider(scrapy.Spider):
     name = "job_searches"
     allowed_domains = ["seek.com.au"]
     start_urls = [
-        "https://www.seek.com.au/software-developer-jobs/in-All-Sydney-NSW"]
+        "https://www.seek.com.au/software-developer-jobs/in-All-Sydney-NSW?sortmode=ListedDate"]
 
     def parse(self, response):
         self.log('Browsing ' + response.url)
