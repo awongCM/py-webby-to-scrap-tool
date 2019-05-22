@@ -22,6 +22,8 @@ class JobSearchSpider(scrapy.Spider):
                 )
 
             item = {}
+            item['job_listing_date'] = job.css(
+                'span[data-automation="jobListingDate"]::text').extract_first()
             item['job_title'] = job.css(
                 'article::attr(aria-label)').extract_first()
             item['company'] = job.css(
