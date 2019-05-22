@@ -16,10 +16,10 @@ class JobSearchSpider(scrapy.Spider):
         for job in job_articles:
             list_of_dutiestasks = []
             duties_list = job.css('ul li')
-            # print('duties_list', duties_list)
             for each_duty in duties_list:
-                list_of_dutiestasks.append(each_duty.css(
-                    'span[data-automation="false"]::text').extract_first())  # TODO - time to revisit this xpath: -_-
+                list_of_dutiestasks.append(
+                    each_duty.css('span::text').extract_first()
+                )
 
             item = {}
             item['job_title'] = job.css(
@@ -32,7 +32,6 @@ class JobSearchSpider(scrapy.Spider):
                 'a[data-automation="jobArea"]::text').extract_first()
             item['salary_range'] = job.css(
                 'span[data-automation="jobSalary"] span::text').extract_first()
-            # TODO - fix up error handling when list of duties and tasks can't be found
             if len(list_of_dutiestasks) != 0:
                 item['role_specification'] = ';'.join(list_of_dutiestasks)
             else:
