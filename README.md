@@ -22,4 +22,4 @@ My very own implementation in scraping and extracting web content, and exporting
 4. To export to CSV files, you run `scrapy crawl job_searches -o job_searches.csv`
 
 #### TODOs
-1. Add some unit testing code in place!!
+1. Add some unit testing code in place!! - (Hint: use unittest or pytest)
